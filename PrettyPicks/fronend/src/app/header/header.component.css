@@ -1,0 +1,142 @@
+img{
+    height: 80px;
+    width: 80px;
+    margin-left: 20px ;
+    margin-right: 10px;
+    margin-top: 1px;
+
+}
+
+#title{
+    color: rgb(207, 135, 147);
+    font-size: 60px;
+    position: relative;
+    font-family: Brush Script MT ;
+    text-decoration: none;
+    top: 15px;
+}
+
+.active{
+    
+    font-weight: bold;
+    text-decoration:underline;
+}
+
+#sign-up{
+    text-decoration: none;
+    background-color: rgb(187, 115, 127);
+    color: white;
+    font-size: 20px;
+    position:relative;
+    bottom: 25px;
+    margin-top: 50px;
+    margin-right: 30px;
+    float:right;
+
+}
+button{
+    text-decoration: none;
+    background-color: rgb(187, 115, 127);
+    color: white;
+    font-size: 20px;
+    position:relative;
+    bottom: 40.2px;
+    border-radius: 4px;
+    border-color: white;
+    height: 36px;
+}
+
+#search{
+    text-decoration: none;
+    font-size: 20px;
+    position:relative;
+    bottom: 40px;
+    margin-left: 150px;
+    margin-top: 40px;
+    height: 30px;
+    width: 400px;
+    border-radius: 5px;border-color: rgb(213, 187, 187);
+}
+
+#login{
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    position:relative;
+    bottom: 20px;
+    margin-top: 50px;
+    margin-right: 30px;
+    float:right;
+
+}
+
+#orders{
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    position:relative;
+    bottom: 20px;
+    margin-top: 50px;
+    margin-right: 30px;
+    float:right;
+
+}
+
+#cart{
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    position:relative;
+    bottom: 20px;
+    margin-top: 50px;
+    margin-right: 30px;
+    float:right;
+
+}
+
+#login:hover{
+    text-decoration: underline;
+    cursor: pointer;
+    transform: scale(1.1); 
+    z-index: 40;          
+
+}
+
+
+#sign-up:hover{
+    
+    cursor: pointer;
+    transform: scale(1.1); 
+    z-index: 20;            
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+
+  
+}
+
+#orders:hover{
+    text-decoration: underline;
+    cursor: pointer;
+    transform: scale(1.1);
+    z-index: 40;           
+
+}
+
+#cart:hover{
+    text-decoration: underline;
+    cursor: pointer;
+    transform: scale(1.1); 
+    z-index: 40;           
+
+
+}
+
+.statusTrue{
+    text-decoration: none;
+    font-size: 20px;
+    position:relative;
+    bottom: 25px;
+    margin-top: 50px;
+    margin-right: 30px;
+    float:right;
+
+}

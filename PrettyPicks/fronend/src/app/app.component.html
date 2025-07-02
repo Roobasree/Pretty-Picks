@@ -1,0 +1,42 @@
+<div *ngIf="showHeader">
+  <app-header></app-header>
+</div>
+<br>
+<br><br>
+
+ <div class="d-flex" id="sidebar">
+ <div *ngIf="showHeader">
+<div class="bg-light text-black p-3" style="width: 250px; height: 450px;" align="center" id="sd">
+    <div style="margin-top: 80px;">
+      <h4 style="display: flex; justify-content: center; font-family: Brush Script MT ; font-size: 30px;" >Categories</h4>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link text-black" routerLink="/kurti" routerLinkActive="active" style="font-size: 15px;">Kurtis</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-black" routerLink="/kurta-set" routerLinkActive="active" style="font-size: 15px;">Kurta-sets</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-black" routerLink="/saree" routerLinkActive="active" style="font-size: 15px;">Sarees</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-black" routerLink="/dresses" routerLinkActive="active" style="font-size: 15px;">dresses</a>
+      </li>
+    </ul>
+    </div>
+  </div>
+</div>
+  
+  <div class="p-4" style="flex-grow: 1;">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<br>
+<br>
+<footer>
+  <p style="text-align: center;">
+    @PrettyPicks - a vibrant e-commerce platform 
+  </p>
+</footer>
+

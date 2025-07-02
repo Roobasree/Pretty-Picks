@@ -1,0 +1,40 @@
+<div class="container my-4">
+  <h2 class="mb-4 text-center">Order History</h2>
+
+  <div class="card mb-4 shadow" *ngFor="let order of order_items; let i = index">
+    <div class="card-header">
+      <strong>Ordered by:</strong> {{ order.name }}<br>
+      <small><strong>Address:</strong> {{ order.doorNo }}, {{ order.address }}, {{ order.city }}</small><br>
+      <small><strong>Phone:</strong> {{ order.phone }}</small><br>
+      <small><strong>Order Date:</strong> {{ today | date:'mediumDate' }}</small>
+    </div>
+
+    <div class="card-body" *ngFor="let orderedItem of order.items">
+      <div class="row align-items-center">
+        
+        <!-- Product Image -->
+        <div class="col-md-3 text-center">
+          <img [src]="'assets/' + orderedItem.item.image" class="img-fluid rounded" style="max-height: 120px;">
+        </div>
+
+        <!-- Product Info -->
+        <div class="col-md-6">
+          <h5 class="text-primary">{{ orderedItem.item.brand }}</h5>
+          <p class="mb-1">{{ orderedItem.item.description }}</p>
+          <p class="mb-1"><strong>Category:</strong> {{ orderedItem.item.category }}</p>
+          <p class="mb-1"><strong>Item ID:</strong> {{ orderedItem.item._id }}</p>
+          <p class="mb-1"><strong>Quantity:</strong> {{ orderedItem.qty }}</p>
+          <p><strong>₹{{ orderedItem.item.price * orderedItem.qty + 49 }}</strong></p>
+
+        </div>
+
+
+        
+
+      </div>
+      <hr>
+    </div>
+  </div>
+</div>
+
+

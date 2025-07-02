@@ -1,0 +1,29 @@
+button{
+    text-decoration: none;
+    background-color: rgb(187, 115, 127);
+    color: white;
+    font-size: 20px;
+    position:relative;
+    bottom: 40.2px;
+    border-radius: 4px;
+    border-color: white;
+    height: 36px;
+}
+
+
+#sidebar{
+    margin-left: 40px;   
+}
+
+.active{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.nav-item:hover{
+    cursor: pointer;
+    transform: scale(1.1); /* Bigger than the rest */
+    z-index: 40; 
+}
+
+

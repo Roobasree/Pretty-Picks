@@ -1,0 +1,14 @@
+<header>
+    &nbsp;&nbsp;<a routerLink="/"><img src='../assets/pp_logo.jpeg' alt=""></a>
+    <a id="title" routerLink="/">PrettyPicks</a>
+    
+
+    <button id = 'sign-up' routerLink="/sign-up">Sign up</button>&nbsp;&nbsp;&nbsp;
+    <a routerLink="/login" id="login" routerLinkActive="active">Login</a>&nbsp;&nbsp;&nbsp;
+
+
+    <a routerLink="/orders" id="orders" routerLinkActive="active">Orders</a>&nbsp;&nbsp;&nbsp;
+    <a routerLink="/cart" id="cart" routerLinkActive="active" *ngIf="cartCount()>0">Cart<span style="color: red;">({{cartCount()}})</span></a>&nbsp;&nbsp;&nbsp;
+    <a routerLink="/cart" id="cart" routerLinkActive="active" *ngIf="cartCount()==0" >Cart</a>&nbsp;&nbsp;&nbsp;
+
+</header>

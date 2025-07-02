@@ -1,0 +1,58 @@
+<div class="container my-4">
+  <h2 class="mb-4 text-center">Order History</h2>
+
+  <div class="card mb-4 shadow" *ngFor="let order of order_items; let i = index ">
+    <div class="row no-gutters align-items-center">
+      
+      <!-- Product Image -->
+      <div class="col-md-3 text-center p-3">
+        <img [src]="'assets/' + order.items.item.image" class="img-fluid rounded" style="max-height: 120px;">
+      </div>
+
+      <!-- Order Details -->
+      <div class="col-md-6 p-3">
+        <h5 class="mb-1 text-primary">{{ order.items.item.brand }}</h5>
+        <p class="mb-1">{{ order.items.item.description }}</p>
+        <p class="mb-1"><strong>Category:</strong> {{ order.items.item.category }}</p>
+        <p class="mb-1"><strong>Item ID:</strong> {{ order.items.item._id }}</p>
+      </div>
+
+      <!-- Price & Buyer -->
+      <div class="col-md-3 p-3 text-md-right text-center">
+        <p><strong>₹{{ order.items.item.price + 49}}</strong></p>
+        <p class="text-muted small">Ordered by: {{ order.name }}</p>
+        
+        <p class="text-muted small">Address: {{ order.address }}</p>
+        <p class="text-muted small">Order Date: {{today | date:'mediumDate'}}</p>
+        <button (click)="cancel(i)" class="btn btn-danger">Cancel Order</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="modal" *ngIf="modal" >
+  <div class="modal-content">
+    <button class="close" (click)="noCancel()">X</button>
+
+
+    <div >
+      <h3>Are you Want to Cancel this Item?</h3><br>
+      <button (click)="Confirm()" class="btn btn-primary">yes</button>&nbsp; &nbsp;
+      <button (click)="noCancel()" class="btn btn-light">no</button>
+
+    </div>
+
+  </div>
+</div>
+
+<div *ngIf="cancelled" class="modal">
+  <!-- <span class="cancel-icon">❌</span> Item Cancelled -->
+<div align="center" class="modal-content">
+  <img src="../assets/cancel.png" alt="">
+  <p> Order Cancelled</p>
+</div>
+
+</div>
+

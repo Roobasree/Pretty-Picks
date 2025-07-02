@@ -1,0 +1,34 @@
+<div align="center">
+        <img src="../assets/pp_logo.jpeg" style="height: 150px; width: 150px;">
+    <br>
+    <br>
+    <h1>Sign Up</h1>
+    <p><i>enjoy your online shopping</i></p>
+    <form [formGroup]="signForm" (ngSubmit)="signup_user()">
+
+        <input type="text" placeholder="username" formControlName='username' /><br>
+        <div *ngIf = "signForm.get('username')?.invalid && signForm.get('username')?.touched">
+            <small *ngIf = "signForm.get('username')?.errors?.['required']">Username is required</small>
+        </div>
+
+
+        <input type="email" placeholder="email@example.com" formControlName='email' /><br>
+        <div *ngIf = "signForm.get('email')?.invalid && signForm.get('email')?.touched">
+            <small *ngIf = "signForm.get('email')?.errors?.['required']">Email is required</small>
+            <small *ngIf = "signForm.get('email')?.errors?.['email']">Enter a valid email</small>
+        </div>
+   
+
+        <input type="password" placeholder="password" formControlName='password' /><br>
+        <div *ngIf = "signForm.get('password')?.invalid && signForm.get('password')?.touched">
+            <small *ngIf ="signForm.get('password')?.errors?.['required']">Password is required</small>
+            <small *ngIf = "signForm.get('password')?.errors?.['minlength']">Minimum 6 character</small>
+            <small *ngIf = "signForm.get('password')?.errors?.['pattern']">Should contain numbers and letters</small>
+        </div>
+  
+        <button type ='submit' >Sign up</button>
+    </form>
+    <small style="color: black;">Already have an account?<a routerLink='/login'>Click to login</a></small>
+
+        <a routerLink="/home">Go Back</a>
+</div>

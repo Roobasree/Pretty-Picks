@@ -1,0 +1,99 @@
+<div class="container container-fluid">
+  <div class="row f-flex justify-content-around">
+    <div class="col-12 col-lg-5 ml-5 img-fluid" id="image" style="top: 50px;">
+      <img [src]="'assets'+kurti.image" height="500" width="390">
+    </div>
+
+    <div class="col-12 col-lg-5 mt-2">
+      <h3>{{kurti.brand}}</h3>
+      <h1>{{kurti.description}}</h1>
+      <p id="item_id">Item #{{kurti._id}}</p>
+
+      <div id="ratings">
+                        
+        <span *ngFor="let star of [1, 2, 3, 4, 5]" style="color: rgb(255, 255, 8);">
+        <i class="bi"
+          [ngClass]="{
+                      'bi-star-fill': star <= Math.floor(kurti.rating),
+                      'bi-star-half' : (kurti.rating % 1 >= 0.5) && (star === Math.ceil(kurti.rating)),
+                      'bi-star': star > kurti.rating
+        }">
+        </i>
+        </span>
+        ({{kurti.rating}})
+      </div>
+
+
+      <p id="price"><strong>Price: </strong>₹{{kurti.price}} &nbsp;<span style="text-decoration: line-through; color: red; font-size: smaller;" *ngIf="kurti.discount>0">{{kurti.price + ((kurti.price*kurti.discount)/100)}}</span></p>
+      <p *ngIf="kurti.discount>0">Discount: <small style="color: orange;">{{kurti.discount}}%</small></p>
+      <div class="stockCounter d-inline">
+        <span class="btn btn-danger minus" (click)="decrease()">-</span>
+
+        <input type="number" class="form-control count d-inline mx-1 text-center" value="1" [(ngModel)]="qty" style="width: 50px; text-align: center;" readOnly/>
+
+        <span class="btn btn-warning minus" (click)="increase()">+</span>
+      </div>
+      <br>
+      <br>
+      <button type="button" id="cart" class="btn btn-light d-inline ml-4" (click)="addToCart()" style="height: 40px; width:400px;">Add to Cart</button>
+      <br>
+
+      <button type="button" id="cart" class="btn btn-success d-inline ml-4" (click)="openPopup()" style="height: 40px; width: 400px;">Buy now</button>
+
+      <hr>
+
+      <p>Status: <span id="stock_status" [innerText]="kurti.availability > 0 ? 'In Stock':'Out of Stock'" [ngStyle]="{'color':kurti.availability > 0 ? 'green':'red'}" ></span></p>
+
+      <hr>
+      <p>Category: <strong>{{kurti.category}}</strong>({{kurti.description}})</p>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- POPUP MODAL -->
+<div class="modal" *ngIf="showModal">
+  <div class="modal-content">
+    <button class="close" (click)="cancelOrder()">X</button>
+
+    <!-- Step 1: Address & Phone -->
+    <div *ngIf="currentStep === 1" align="center">
+      <h3>Enter Delivery Details</h3><br>
+      <input [(ngModel)]="name" placeholder="Customer's name" class="form-control my-2">
+      <input [(ngModel)]="doorNo" placeholder="Building/House No" class="form-control my-2">
+      <input [(ngModel)]="address" placeholder="Street/Area" class="form-control my-2">
+      <input [(ngModel)]="city" placeholder="City" class="form-control my-2">
+      <input [(ngModel)]="pin" placeholder="Pin Code" class="form-control my-2">
+      <input [(ngModel)]="phone" placeholder="Phone Number" class="form-control my-2"> <br>
+
+      <button (click)="nextstep()" class="btn btn-primary">Next</button>
+    </div>
+
+    <!-- Step 2: Order Summary -->
+    <div *ngIf="currentStep === 2">
+      <h3>Order Summary</h3>
+      <h5>Delivery to: {{name}}</h5>
+      <small><b>Delivery address: </b>{{doorNo}}, {{address}}, {{city}}, {{pin}}</small><br>
+      <small><b>Contact: </b>{{phone}}</small><br>
+      <small><strong>Item:</strong> #{{ kurti.category}}-{{kurti.brand }}</small><br>
+      <small><strong>Price:</strong> ₹{{kurti.price + ((kurti.price*kurti.discount)/100)}}</small><br>
+      <small><strong>Discount:</strong> - ₹{{(kurti.price*kurti.discount)/100}}</small><br>
+      <small><strong>Delivaery Charge:</strong> + ₹49</small><br>
+      <small><strong>Total:</strong> ₹{{ kurti.price + 49 }}</small><br>
+
+      <button (click)="confirm()" class="btn btn-success">Confirm Order</button>&nbsp;&nbsp;
+      <button (click)="cancelOrder()" class="btn btn-danger">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="confirmed" class="modal">
+  <!-- <span class="cancel-icon"></span> Item Cancelled -->
+<div align='center'class="modal-content">
+  <img src="../assets/confirm.jpg" alt="">
+  <h4>Order confirmed</h4>
+  <small routerLink="/orders" style="color: blue;">Check orders</small>
+</div>
+
+</div>

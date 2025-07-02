@@ -1,0 +1,44 @@
+<section id="kurta-set" class="container ">
+        <h1 style="font-family: Brush Script MT ;">Kurta Sets</h1>
+
+    <div class="row">
+        <div *ngFor="let item of pagination()" class="col-sm-12 col-md-6 col-lg-3 my-3">
+            <div class="card" style="width: 18rem;">
+                <div style="display:flex; justify-content:center;">
+                    <img [src]="'assets'+item.image" class="card-img-top" >
+                </div>
+                <div class="card-body">
+                    <div align="center" id="ratings">
+                        <span *ngFor="let star of [1,2,3,4,5]">
+                            <i class="bi"
+                            [ngClass]="{
+                                'bi-star-fill':star <= Math.floor(item.rating),
+                                'bi-star-half': (item.rating % 1 >= 0.5) && (star===Math.ceil(item.rating)),
+                                'bi-star': star>item.rating
+                            }">
+                            </i>
+                        </span>
+                        ({{item.rating}})
+                    </div>
+                    <h5 class="card-title">{{item.brand}}</h5>
+                    <!-- <p class="card-text">{{item.description}}</p> -->
+                    <p class="card-text">
+                        <strong style="color: rgb(226, 120, 63)">Price:</strong> ₹{{ item.price }}&nbsp;&nbsp;
+                        <span style="color:rgb(130, 206, 130)" *ngIf="item.discount>0">Discount: {{ item.discount }}%</span><br>
+                    </p>
+                    <div align="center">
+                        <button class="btn btn-light">view</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<br>
+<br>
+    <div style="float: right;">
+        <button class="btn btn-light" (click)="previouspage()" [disabled]="currentpage===1">previous</button>
+        &nbsp;&nbsp;{{currentpage}}/{{totalpage}}&nbsp;&nbsp;
+        <button class="btn btn-light" (click)="nextpage()" [disabled]="currentpage===totalpage">next</button>
+        
+    </div>
+</section>

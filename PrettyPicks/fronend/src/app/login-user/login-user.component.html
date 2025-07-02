@@ -1,0 +1,13 @@
+<div align="center">
+    <img src="../assets/pp_logo.jpeg" style="height: 150px; width: 150px;">
+    <br>
+    <br>
+    <h1>User Login</h1>
+    <p><i>Let's have a wonderful experience with PrettyPicks</i></p>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <input type="email" placeholder="user email" formControlName="email" required><br><br>
+        <input type="password" placeholder="enter password" formControlName="password" required><br><br>
+        <button type="submit">Login</button>
+    </form>
+    <a routerLink="/home">Go Home</a>
+</div>
